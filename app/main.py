@@ -587,7 +587,7 @@ def employee_monthly(emp_code: str, month: str = Query(..., pattern=r"^\d{4}-(0[
     if not result:
         raise HTTPException(404, "employee not found")
     row = result[0]
-    row["attendance_pct"] = half_up(row.get("attendance_pct"), 2)
+    row["attendance_pct"] = half_up(row.get("attendance_pct"), 4)
     row["present_days"] = half_up(row.get("present_days", 0), 2)
     return row
 
